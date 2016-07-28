@@ -148,7 +148,11 @@ public class HttpEce {
      * Utility to concat byte arrays
      */
     private byte[] concat(byte[]... arrays) {
-        int combinedLength = Arrays.stream(arrays).mapToInt(array -> array.length).sum();
+        int combinedLength = 0;
+        for (byte[] a : arrays) {
+            combinedLength += a.length;
+        }
+
         int lastPos = 0;
 
         byte[] combined = new byte[combinedLength];
